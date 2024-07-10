@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DONAR</title>
+    <link rel="stylesheet" href="css/donar.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <header id="header">
+        <a href="index.html">
+            <img src="imagenes/logo.png" class="logo" >
+        </a> 
+        <input type="checkbox" id="menu" />
+        <label for="menu">
+            <img src="imagenes/menu.png" alt="menu desplegable" class="menu-icono">
+        </label>
+        <ul class="menu">
+            <li class="item"><a href="index.html"> <b>Inicio</b> </a></li>
+            <li class="item"><a href="quienes_somos.html"> <b>Quienes somos</b> </a></li>
+            <li class="item"><a href="login.html"> <b>Login</b> </a></li>
+            <li class="btn" id="donarBtn"><a href="dashboard.php"><b> MI CUENTA </b></a></li>
+        </ul>
+    </header>
+
+    <div class="message"> donacion </div>
+    <div class="flex-container">
+        <div class="login-container">
+            <header>
+                <div id="head_title" class="carta">
+                    <h3>¡Haz tu donacion!</h3>
+                </div>
+            </header>
+
+            <form action="donar.php" method="post">           
+              <div class="container">
+                <span for="cantidad_donada"><b>Cantidad a donar (euros)</b></span>
+                <input type="number" min="1" step="0.01" placeholder="Ingresa la cantidad" name="cantidad_donada" required>
+                <br>
+                <span id="errorMensaje" style="color: red;"></span>
+              </div>
+          
+              <div class="container">
+                <button type="submit">Donar</button>
+                <p></p>
+
+                <button type="button" class="cancelbtn" onclick="cancelar()">Cancelar</button>
+            </div>
+          </form>
+        </div>
+    </div>
+    
+    <script>
+        function validarFormulario() {
+            var cantidadInput = document.getElementById('cantidad_donada');
+            var errorMensaje = document.getElementById('errorMensaje');
+        
+            if (cantidadInput.value < 0) {
+                errorMensaje.textContent = 'La cantidad no puede ser un número negativo.';
+                return false; 
+            } else {
+                errorMensaje.textContent = ''; 
+                return true; }
+        }
+
+        function cancelar() {
+            window.location.href = 'dashboard.php';
+        }
+        </script>
+
+</body>
+</html>

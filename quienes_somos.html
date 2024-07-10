@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quienes somos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="header">
+        <a href="index.html">
+            <img src="imagenes/logo.png" class="logo" >
+        </a> 
+        <input type="checkbox" id="menu" />
+        <label for="menu">
+            <img src="imagenes/menu.png" alt="menu desplegable" class="menu-icono">
+        </label>
+        <ul class="menu">
+            <li class="item"><a href="index.html"> <b>Inicio</b> </a></li>
+            <li class="item"><a href="quienes_somos.html"> <b>Quienes somos</b> </a></li>
+            <li class="item"><a href="login.html"> <b>Login</b> </a></li>
+            <li class="btn" id="donarBtn"><a href="dashboard.php"><b> DONAR AHORA </b></a></li>
+        </ul>
+    </header>
+
+    <div id="contenido">
+        <div class="cajas_texto">
+            <h1>¿QUIÉNES SOMOS?</h1>
+            <p class="texto">¡BIENVENIDOS! <br>
+                Queremos mejorar la ciudad de Madrid a través de la reforestación de sus áreas urbanas menos arboladas. 
+                Somos conscientes de los desafíos ambientales que enfrenta la ciudad, desde el aumento de las temperaturas
+                en verano hasta el frío invernal, estamos comprometidos en contribuir a la lucha 
+                contra el calentamiento global. <br><br>
+                Creemos que la reintroducción de árboles no solo embellecerá la ciudad, 
+                sino que también tendrá un impacto positivo en la calidad de vida de sus habitantes, 
+                proporcionando sombra, mejorando la calidad del aire y fomentando un equilibrio natural. 
+                Juntos, estamos dedicados a hacer de Madrid un lugar más verde y saludable para las 
+                generaciones venideras.
+                <br><br>
+                <span class="ultimo-parrafo">¡Ayudanos a conseguir nuestro objetivo de 2000€!! <br> Cada 2€ es un árbol plantado</span>
+            </p>
+                
+        </div>
+        <div class="imagenes">
+            <img src="imagenes/arbol2.jpg" alt="arboles" style="width: 400px; height: auto; padding-top: 80px;">
+        </div>
+    </div>
+
+    <div id="contenido1">
+        <div class="cajas_texto">
+            <h1>¿QUÉ ES CROWFUNDING?</h1>
+            <p class="texto">
+                El crowdfunding, o financiamiento colectivo, es un modelo donde numerosas personas 
+                aportan pequeñas sumas de dinero para respaldar proyectos, causas o ideas. 
+                <br><br>
+                Apoyar el crowdfunding permite respaldar proyectos innovadores, participar 
+                activamente en su desarrollo, obtener acceso exclusivo a recompensas, 
+                respaldar causas sociales y empoderar a pequeños emprendedores. 
+                </p>
+        </div>
+        <div class="imagenes">
+            <img src="imagenes/arbol1.jpg" alt="arboles" style="width: 400px; height: auto; padding-top: 80px;">
+        </div>
+    </div>
+
+    <div id="contenido2">
+        <div class="cajas_texto">
+            <h1>IMPORTANCIA DE LOS ARBOLES</h1>
+            <p class="texto">Los árboles desempeñan un papel crucial en el equilibrio y la sostenibilidad de nuestro planeta,
+                 ya que ofrecen una amplia gama de beneficios ambientales, económicos y sociales. 
+                 Desde una perspectiva ambiental, los árboles desempeñan un papel esencial en la absorción de 
+                 dióxido de carbono, liberando oxígeno y ayudando a mitigar el cambio climático. 
+                 <br>
+                 Además, sirven como hábitat para una diversidad de vida silvestre, contribuyen 
+                 a la conservación del suelo y regulan los patrones de agua. 
+                 <br><br>
+                 Socialmente, los árboles mejoran la calidad del aire, proporcionan sombra, 
+                 contribuyen a paisajes estéticamente agradables y tienen beneficios para la salud al 
+                 reducir el estrés y mejorar la calidad del aire que respiramos. 
+                <br><br>
+            </p>
+        </div>
+        <div class="imagenes">
+            <img src="imagenes/arbol3.jpg" alt="arboles" style="width: 400px; height: auto; padding-top: 80px;">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("donarBtn").addEventListener("click", function (event) {
+            fetch('check_session.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loggedIn) {
+                        console.log("Usuario inició sesión, permitir donación.");
+                    } else {
+                        event.preventDefault();
+                        alert("Debes iniciar sesión para donar.");
+                        window.location.href = "login.html";
+                    }
+                })
+                .catch(error => console.error('Error al verificar sesión:', error));
+        });
+    </script>
+    
+</body>
+</html>
